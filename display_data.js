@@ -11,12 +11,17 @@ var data = {
 };
 
 $(document).ready(function(){
+  var createSongString = function(memo, song){
+     memo += "<tr><td>" + song.number + "</td><td>" + song_names[song.number] + "</td><td>" + song.singing + "</td><td>" + song.state + "</td><td>" + song.year;
+     return memo;
+  };
+
   var postData = function(data){
     $("#Caller h4").text(data.caller.first_name + ' ' + data.caller.surname);
+    $("#callerTable").append(data.songs.reduce(createSongString, ''));
 
   };
 
   postData(data);
-  $("body")
 
   });

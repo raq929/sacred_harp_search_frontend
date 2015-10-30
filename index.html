@@ -16,41 +16,79 @@
 <body>
 <h1> Sacred Harp Search</h1>
 <div class="container">
-      <!--Row with two equal columns-->
-  <div class="row">
-    <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="demo-content">
-        <h3>Search:</h3>
+    <div class="bs-example">
+    <ul class="nav nav-tabs" id="myTab">
+        <li class="active"><a data-toggle="tab" href="#Caller">Caller</a></li>
+        <li><a data-toggle="tab" href="#Song">Song</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="Caller" class="tab-pane fade in active">
+            <h3>Caller</h3>
+            <div class="table-responsive">
+              <h4>Rachel Stevens</h4>
+              <table class="table table-striped table-hover">
+                  <thead>
+                      <tr>
+                          <th>Song</th>
+                          <th>Number</th>
+                          <th>Singing</th>
+                          <th>State</th>
+                          <th>Year</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>146</td>
+                          <td>Hallelujah</td>
+                          <td>Ohio State Convention</td>
+                          <td>OH</td>
+                          <td>2006</td>
+                      </tr>
+                  </tbody>
+              </table>
+            </div>
+        </div>
+
+        <div id="Song" class="tab-pane fade">
+            <h3>Song</h3>
+            <div class="table-responsive">
+              <table class="table table-striped table-hover">
+                  <thead>
+                      <tr>
+                          <th>Caller</th>
+                          <th>Singing</th>
+                          <th>State</th>
+                          <th>Year</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <h3>146 - Hallelujah</h3>
+                      <tr>
+                          <td>Rachel Stevens</td>
+                          <td>Ohio State Convention</td>
+                          <td>OH</td>
+                          <td>2006</td>
+                      </tr>
+                  </tbody>
+              </table>
+            </div>
         </div>
     </div>
-    <div class="table-responsive">
-      <table class="table table-striped table-hover">
-          <thead>
-              <tr>
-                  <th>Song</th>
-                  <th>Number</th>
-                  <th>Caller</th>
-                  <th>Singing</th>
-                  <th>State</th>
-                  <th>Year</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>146</td>
-                  <td>Hallelujah</td>
-                  <td>Rachel Stevens</td>
-                  <td>Ohio State Convention</td>
-                  <td>OH</td>
-                  <td>2006</td>
-              </tr>
-          </tbody>
-      </table>
-    </div>
+
   </div>
 </div>
 
   <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#myTab #Caller").tab('show'); // show first tab
+$("#myTab #Song").tab('show');
+});
+</script>
+
 </body>
 </html>

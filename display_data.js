@@ -13,6 +13,8 @@ var data = {
 $(document).ready(function(){
   $("#myTab #Caller").tab('show'); // show first tab
   $("#myTab #Song").tab('show');
+  $("#myTab #Admin").tab('show');
+
 
   $("#songTable").tablesorter();
   $("#callerTable").tablesorter();

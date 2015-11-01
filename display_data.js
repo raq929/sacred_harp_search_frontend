@@ -6,11 +6,16 @@ var song_names = {
 var data = {
   caller: {first_name: "Myles", surname: "Dakan"},
   songs: [
-  {number: 146,singing: "Ohio State Convention",state: "OH",year: 2005},
+  {number: 146, singing: "Ohio State Convention",state: "OH",year: 2005},
   {number: 131, singing: "Boston All-Day", state: "MA", year: 2014}]
 };
 
 $(document).ready(function(){
+  $("#myTab #Caller").tab('show'); // show first tab
+  $("#myTab #Song").tab('show');
+
+  $("#songTable").tablesorter();
+  $("#callerTable").tablesorter();
   var createSongString = function(memo, song){
      memo += "<tr><td>" + song.number + "</td><td>" + song_names[song.number] + "</td><td>" + song.singing + "</td><td>" + song.state + "</td><td>" + song.year;
      return memo;

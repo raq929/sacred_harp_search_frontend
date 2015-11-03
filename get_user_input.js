@@ -45,7 +45,7 @@ $(document).ready(function(){
     //send data to server
   });
 
-  $('#loginButton').on('click', function(e){
+  $('#loginForm').on('submit', function(e){
     var user = wrap('user', form2object(this));
     console.log(user);
     var cb = function (error, data) {
@@ -54,8 +54,10 @@ $(document).ready(function(){
         return;
       }
       errorHandler(null, data);
-
+      $('#loginForm').hide();
+      //send data to server
     };
+    return false;
   });
 
 });

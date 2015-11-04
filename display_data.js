@@ -30,13 +30,16 @@ $(document).ready(function(){
 
   $("#songTable").tablesorter();
   $("#callerTable").tablesorter();
+
   var createSongString = function(memo, song){
-     memo += "<tr><td>" + song.number + "</td><td>" + song_names[song.number] + "</td><td>" + song.singing + "</td><td>" + song.state + "</td><td>" + song.year;
+     memo += "<tr><td>" + song.number + "</td><td>" + song_names[song.number] + "</td><td>" + song.singing + "</td><td>" + song.state + "</td><td>" + song.year + "</td>";
      return memo;
   };
 
   var postData = function(data){
     $("#Caller h4").text(data.caller.first_name + ' ' + data.caller.surname);
+    var clearSongs = "";
+    $("#callerTable").html(clearSongs);
     $("#callerTable").append(data.calls.reduce(createSongString, ''));
 
   };

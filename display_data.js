@@ -39,7 +39,7 @@ $(document).ready(function(){
   var postData = function(data){
     $("#Caller h4").text(data.caller.first_name + ' ' + data.caller.surname);
     var clearSongs = "";
-    $("#callerTable").html(clearSongs);
+    $("#callerTable .tableBody").html(clearSongs);
     $("#callerTable").append(data.calls.reduce(createSongString, ''));
 
   };

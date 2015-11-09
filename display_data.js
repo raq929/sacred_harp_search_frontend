@@ -7,18 +7,33 @@ var song_names = {
   178: "Africa"
 };
 var data = {
-  caller: {first_name: "Myles", surname: "Dakan"},
-  calls: [
-    {number: 146, singing: "Ohio State Convention",state: "OH",year: 2005},
-    {number: 131, singing: "Boston All-Day", state: "MA", year: 2014}
-    ]};
-
-var data2 = {
-  caller: {first_name:"Rachel", surname: "Stevens"},
-  calls: [
-  {number: 136, singing: "Western Mass Convention", state: "MA", year: 2012},
-  {number: 178, singing: "Pioneer Valley All-day", state: "CT", year: 2011}
-  ]};
+  "calls": [
+    {
+      "song": {
+        "number": "146",
+        "name": "Hallelujah"
+      },
+      "singing": {
+        "name": "Ohio State Convention",
+        "location": "Dayton, Ohio",
+        "date": "2005-02-27"
+      },
+      "caller": "Rachel Stevens"
+    },
+    {
+      "song": {
+        "number": "146",
+        "name": "Hallelujah"
+      },
+      "singing": {
+        "name": "Western Mass Convention",
+        "location": "Amherst, MA",
+        "date": "2013-08-13"
+      },
+      "caller": "Rachel Stevens"
+    }
+  ]
+};
 
 
 
@@ -32,19 +47,25 @@ $(document).ready(function(){
   $("#callerTable").tablesorter();
 
   var createSongString = function(memo, song){
-     memo += "<tr><td>" + song.number + "</td><td>" + song_names[song.number] + "</td><td>" + song.singing + "</td><td>" + song.state + "</td><td>" + song.year + "</td>";
+     memo += "<tr><td>" + song.number + "</td><td>" + song.name + "</td><td>" + singing.name + "</td><td>" + singing.singing.location + "</td><td>" + singing.year + "</td>";
      return memo;
   };
 
-  var postData = function(data){
-    $("#Caller h4").text(data.caller.first_name + ' ' + data.caller.surname);
-    var clearSongs = "";
-    $("#callerTable .tableBody").html(clearSongs);
-    $("#callerTable").append(data.calls.reduce(createSongString, ''));
+  var callsTableTemplate = Handlebars.compile($('#callsByCaller').html());
 
-  };
+  var newHTML = callsTableTemplate(data);
 
-  postData(data);
+  $("#putCallsByCallerHere").html(newHTML);
+
+  // var postData = function(data){
+  //   $("#Caller h4").text(data.caller.first_name + ' ' + data.caller.surname);
+  //   var clearSongs = "";
+  //   $("#callerTable .tableBody").html(clearSongs);
+  //   $("#callerTable").append(data.calls.reduce(createSongString, ''));
+
+  // };
+
+  // postData(data);
 
 
   });

@@ -24,69 +24,33 @@
     <div class="tab-content">
       <div id="Caller" class="tab-pane fade in active">
         <h3>Caller</h3>
-        <div class="example">
+        <div>
           <form class="form-inline" role="form" id="callerSearch">
             <div class="form-group">
-              <input name = 'first_name' type="text" placeholder="First Name">
-            </div>
-            <div class="form-group">
-              <input name = 'surname' type="text" placeholder="Last Name">
+              <input name = 'name' type="text" placeholder="Caller name">
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
           </form>
-      </div>
-      <div class="table-responsive tablesorter">
-        <h4>Rachel Stevens</h4>
-        <table class="table table-striped table-hover" id="callerTable" summary="Table of calls made by the requested caller.">
-            <thead>
-                <tr>
-                    <th>Number</th>
-                    <th>Song</th>
-                    <th>Singing</th>
-                    <th>State</th>
-                    <th>Year</th>
-                </tr>
-            </thead>
-            <tbody class = 'tableBody'>
-                <tr>
-                    <td>146</td>
-                    <td>Hallelujah</td>
-                    <td>Ohio State Convention</td>
-                    <td>OH</td>
-                    <td>2006</td>
-                </tr>
-            </tbody>
-        </table>
-      </div>
-    </div>
+        </div> <!-- ends form div   -->
+        <div class="table-responsive tablesorter" id= "putCallsByCallerHere">
+        </div>
+    </div>  <!-- ends Caller tab-->
 
     <div id="Song" class="tab-pane fade">
       <h3>Song</h3>
-      <div class="table-responsive tablesorter">
-        <h3>146 - Hallelujah</h3>
-        <table class="table table-striped table-hover" summary="Table of calls of the requested song">
-          <thead>
-            <tr>
-                <th>Caller</th>
-                <th>Singing</th>
-                <th>State</th>
-                <th>Year</th>
-            </tr>
-          </thead>
-          <tbody class = "tableBody">
-            <tr>
-                <td>Rachel Stevens</td>
-                <td>Ohio State Convention</td>
-                <td>OH</td>
-                <td>2006</td>
-            </tr>
-          </tbody>
-        </table>
+      <div id="putSongsTableHere"class="table-responsive tablesorter">
+
       </div>
     </div>
 
     <div id="Admin" class="tab-pane fade">
       <h3>Admin</h3>
+        <form class"form-horizontal" id="register">
+          <input name="email" type="text" placeholder="email">
+          <input name="password" type="password" placeholder="password">
+          <input name="password_confirmation" type="password" placeholder="password confirmation">
+          <input name="register" type="submit" value="Register">
+        </form>
         <form class="form-horizontal" id="loginForm">
           <div class="form-group">
             <label for="inputEmail" class="control-label col-xs-2">Email</label>
@@ -195,16 +159,73 @@
   </div> <!-- End example div -->
 </div>  <!-- End container div -->
 
-  <!-- Latest compiled and minified JavaScript -->
+  <!-- Handlebars templates -->
 
+  <!-- Search by caller template -->
+<script id="callsByCaller" type="text/x-handlebars-template">
+        <h4></h4>
+        <table class="table table-striped table-hover" id="callerTable" summary="Table of calls made by the requested caller.">
+            <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Song</th>
+                    <th>Singing</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody class = 'tableBody'>
+                {{#each calls}}
+                <tr>
+                    <td>{{song.number}}</td>
+                    <td>{{song.name}}</td>
+                    <td>{{singing.name}}</td>
+                    <td>{{singing.location}}</td>
+                    <td>{{singing.date}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+      </div>
+</script>
+
+<!-- Search by song template -->
+<h3>146 - Hallelujah</h3>
+        <table class="table table-striped table-hover" summary="Table of calls of the requested song">
+          <thead>
+            <tr>
+                <th>Caller</th>
+                <th>Singing</th>
+                <th>State</th>
+                <th>Year</th>
+            </tr>
+          </thead>
+          <tbody class = "tableBody">
+            <tr>
+                <td>Rachel Stevens</td>
+                <td>Ohio State Convention</td>
+                <td>OH</td>
+                <td>2006</td>
+            </tr>
+          </tbody>
+        </table>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-ivk71nXhz9nsyFDoYoGf2sbjrR9ddh+XDkCcfZxjvcM=" crossorigin="anonymous"></script>
-
+<!-- handlebars -->
+<script src="handlebars-v4.0.4.js"></script>
+<!-- Bootstrap -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-
+<!-- Tablesorter -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.23.5/js/jquery.tablesorter.js"></script>
+<!-- Local scripts -->
+<script src="shs_api.js" type = "application/javascript"></script>
 <script src="display_data.js" type = "application/javascript"></script>
 <script src="get_user_input.js" type = "application/javascript"></script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.23.5/js/jquery.tablesorter.js"></script>
+
 
 </body>
 </html>

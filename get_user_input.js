@@ -1,6 +1,17 @@
 'use strict';
+var userID, currentToken;
+
 
 $(document).ready(function(){
+
+ var callback = function callback(error, data) {
+    if (error) {
+      console.log(error);
+      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+      return;
+    }
+    $('#result').val(JSON.stringify(data, null, 4));
+  };
 
   var form2object = function(form) {
     var data = {};
@@ -38,16 +49,14 @@ $(document).ready(function(){
         return;
       }
       errorHandler(null, data);
-      $('#callerSearch').hide();
-
     };
     e.preventDefault();
-    //send data to server
+    shsapi.getCaller(cb);
   });
 
   $('#loginForm').on('submit', function(e){
-    var user = wrap('user', form2object(this));
-    console.log(user);
+    var credentials = wrap('user', form2object(this));
+    console.log(credentials);
     var cb = function (error, data) {
       if (error){
         errorHandler(error);
@@ -55,8 +64,20 @@ $(document).ready(function(){
       }
       errorHandler(null, data);
       $('#loginForm').hide();
-      //send data to server
+      console.log('' + data.user.token)
+      currentToken = data.user.token;
+      userID = data.user.id;
     };
+    e.preventDefault();
+    tttapi.login(credentials, cb);
+    return false;
+  });
+
+
+   $('#register').on('submit', function(e) {
+    var credentials = wrap('credentials', form2object(this));
+    shsapi.register(credentials, callback);
+    e.preventDefault();
     return false;
   });
 

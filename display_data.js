@@ -6,7 +6,7 @@ var song_names = {
   136: "Jefferson",
   178: "Africa"
 };
-var data = {
+var dataCaller = {
   "calls": [
     {
       "song": {
@@ -35,6 +35,8 @@ var data = {
   ]
 };
 
+var dataSongs = {"calls":[{"song":{"number":"146","name":"Hallelujah"},"singing":{"name":"Ohio State Convention","location":"Dayton, Ohio","date":"2005-02-27"},"caller":"Rachel Stevens"}]};
+
 
 
 $(document).ready(function(){
@@ -51,11 +53,17 @@ $(document).ready(function(){
      return memo;
   };
 
-  var callsTableTemplate = Handlebars.compile($('#callsByCaller').html());
+  var callsByCallerTemplate = Handlebars.compile($('#callsByCaller').html());
+  var callsBySongTemplate = Handlebars.compile($('#callsBySong').html());
 
-  var newHTML = callsTableTemplate(data);
+  var newHTML = callsByCallerTemplate(dataCaller);
+  var newHTML2 = callsBySongTemplate(dataSongs);
+
 
   $("#putCallsByCallerHere").html(newHTML);
+
+
+  $("#putCallsBySongHere").html(newHTML2);
 
   // var postData = function(data){
   //   $("#Caller h4").text(data.caller.first_name + ' ' + data.caller.surname);

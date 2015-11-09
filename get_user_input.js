@@ -54,6 +54,22 @@ $(document).ready(function(){
     shsapi.getCaller(cb);
   });
 
+
+  $('#songSearch').on('submit', function(e) {
+
+    var caller = wrap('song', form2object(this));
+    console.log(caller);
+    var cb = function (error, data) {
+      if (error){
+        errorHandler(error);
+        return;
+      }
+      errorHandler(null, data);
+    };
+    e.preventDefault();
+    shsapi.getSong(cb);
+  });
+
   $('#loginForm').on('submit', function(e){
     var credentials = wrap('user', form2object(this));
     console.log(credentials);

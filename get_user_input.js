@@ -1,6 +1,6 @@
 'use strict';
 var userID, currentToken;
-
+var callerId, songId, singingId;
 
 $(document).ready(function(){
 
@@ -30,47 +30,89 @@ $(document).ready(function(){
     return wrapper;
   };
 
-  var errorHandler = function (error, data) {
-    if (error) {
-      console.log(error);
-      $('#result').val('status: ' + error.status + ', error: ' +error.error);
-      return;
-    }
-    $('#result').val(JSON.stringify(data, null, 4));
+  var getRoute = function(data){
+    var route;
+
+    if ('caller' in data){
+     route = "/callers/" + data.caller.id;
+     console.log(route);
+    } else if ('singing' in data){
+      route = "/singings/" + data.singing.id;
+    } else if ('song' in data)
+      route = "/songs/" + data.song.id;
+    return route;
   };
 
-  $('#callerSearch').on('submit', function(e) {
+  var errorHandler = function(error, data){
 
-    var caller = wrap('caller', form2object(this));
-    console.log(caller);
-    var cb = function (error, data) {
-      if (error){
-        errorHandler(error);
-        return;
+  };
+
+  var getCallsbyCaller = function(error,data){
+    var cb = function(error, data) {
+      if (error) {
+      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+      return;
+      }  else {
+        $('#result').val(JSON.stringify(data, null, 4));
+        displayCallsByCaller(data);
       }
-      errorHandler(null, data);
     };
+    var route;
+    if (error){
+      errorHandler(error);
+      return;
+    }
+    else {
+      $('#result').val(JSON.stringify(data, null, 4));
+      route = getRoute(data);
+      shsapi.getCalls(route, cb);
+    }
+  };
+
+  var getCallsbySong = function(error, data){
+    var cb = function(error, data) {
+      if (error) {
+      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+      return;
+      }  else {
+        $('#result').val(JSON.stringify(data, null, 4));
+        displayCallsBySong(data);
+      }
+    };
+    var route;
+    if (error){
+      errorHandler(error);
+      return;
+    }
+    else {
+      $('#result').val(JSON.stringify(data, null, 4));
+      route = getRoute(data);
+      console.log(route);
+      shsapi.getCalls(route, cb);
+    }
+  };
+
+
+  $('#callerSearch').on('submit', function(e) {
     e.preventDefault();
-    shsapi.getCaller(cb);
+    console.log(event.target['name'].value);
+    var params = "?name=" + event.target['name'].value;
+    //console.log(caller);
+    shsapi.getCallerId(params, getCallsbyCaller);
+
   });
 
 
   $('#songSearch').on('submit', function(e) {
 
-    var caller = wrap('song', form2object(this));
-    console.log(caller);
-    var cb = function (error, data) {
-      if (error){
-        errorHandler(error);
-        return;
-      }
-      errorHandler(null, data);
-    };
+    var params = "?number=" + event.target['number'].value;
+    console.log(params);
     e.preventDefault();
-    shsapi.getSong(cb);
+    shsapi.getSongId(params, getCallsbySong);
   });
 
   $('#loginForm').on('submit', function(e){
+    e.preventDefault();
     var credentials = wrap('user', form2object(this));
     console.log(credentials);
     var cb = function (error, data) {
@@ -80,11 +122,11 @@ $(document).ready(function(){
       }
       errorHandler(null, data);
       $('#loginForm').hide();
-      console.log('' + data.user.token)
+      console.log('' + data.user.token);
       currentToken = data.user.token;
       userID = data.user.id;
     };
-    e.preventDefault();
+
     tttapi.login(credentials, cb);
     return false;
   });

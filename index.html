@@ -19,6 +19,7 @@
     <ul class="nav nav-tabs" id="myTab">
       <li class="active"><a data-toggle="tab" href="#Caller">Caller</a></li>
       <li><a data-toggle="tab" href="#Song">Song</a></li>
+      <li><a data-toggle="tab" href="#Singing">Singing</a></li>
       <li><a data-toggle="tab" href="#Admin">Admin</a><li>
     </ul>
     <div class="tab-content">
@@ -49,7 +50,24 @@
       <div id="putCallsBySongHere"class="table-responsive tablesorter">
 
       </div>
-    </div>
+    </div> <!-- End Song Tab -->
+
+    <div id="Singing" class="tab-pane fade">
+      <h3>Singing</h3>
+      <div>
+          <form class="form-inline" role="form" id="singingSearch">
+            <div class="form-group">
+              <input name = 'name' type="text" placeholder="Name of Singing">
+              <input name = 'date' type="date" placeholder="Date">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+            <button class= "btn">List Singings</button>
+          </form>
+        </div> <!-- ends form div   -->
+      <div id="putCallsBySingingHere"class="table-responsive tablesorter">
+
+      </div>
+    </div> <!-- End of Singing Tab -->
 
     <div id="Admin" class="tab-pane fade">
       <h3>Admin</h3>
@@ -222,6 +240,30 @@
         </table>
 </script>
 
+<!-- Calls by Singing Template -->
+<script id="callsBySinging" type="text/x-handlebars-template">
+<h3>{{calls.song.number}} - {{calls.song.name}}</h3>
+        <table class="table table-striped table-hover" summary="Table of calls of the requested song">
+          <thead>
+            <tr>
+                <th>Caller</th>
+                <th>Singing</th>
+                <th>Location</th>
+                <th>Date</th>
+            </tr>
+          </thead>
+          <tbody class = "tableBody">
+          {{#each calls}}
+            <tr>
+                <td>{{caller}}</td>
+                <td>{{singing.name}}</td>
+                <td>{{singing.location}}</td>
+                <td>{{singing.date}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+</script>
 
 <!-- Latest compiled and minified JavaScript -->
 <!-- jQuery -->

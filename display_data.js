@@ -56,6 +56,12 @@ var displayCallsBySong = function(data){
   $("#putCallsBySongHere").html(newHTML);
 };
 
+var displayCallsBySinging = function(data){
+  var callsBySongTemplate= Handlebars.compile($('#callsBySinging').html());
+  var newHTML = callsBySingingTemplate(data);
+  $("#putCallsBySingingHere").html(newHTML);
+};
+
 // var dd =  {
 
 //  // createSongString: function(memo, song){

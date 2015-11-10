@@ -92,6 +92,30 @@ $(document).ready(function(){
     }
   };
 
+ var getCallsbySinging = function(error, data){
+    var cb = function(error, data) {
+      if (error) {
+      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+      return;
+      }  else {
+        $('#result').val(JSON.stringify(data, null, 4));
+        displayCallsBySinging(data);
+      }
+    };
+    var route;
+    if (error){
+      errorHandler(error);
+      return;
+    }
+    else {
+      $('#result').val(JSON.stringify(data, null, 4));
+      route = getRoute(data);
+      console.log(route);
+      shsapi.getCalls(route, cb);
+    }
+  };
+
+
 
   $('#callerSearch').on('submit', function(e) {
     e.preventDefault();
@@ -99,21 +123,29 @@ $(document).ready(function(){
     var params = "?name=" + event.target['name'].value;
     //console.log(caller);
     shsapi.getCallerId(params, getCallsbyCaller);
-
   });
 
 
   $('#songSearch').on('submit', function(e) {
-
+    e.preventDefault();
     var params = "?number=" + event.target['number'].value;
     console.log(params);
-    e.preventDefault();
+
     shsapi.getSongId(params, getCallsbySong);
+  });
+
+  $('#singingSearch').on('submit', function(e) {
+    e.preventDefault();
+    var params = "?name=" + event.target['name'].value
+      + '&date=' + event.target['date'].value;
+    console.log(params);
+
+    shsapi.getSingingId(params, getCallsbySinging);
   });
 
   $('#loginForm').on('submit', function(e){
     e.preventDefault();
-    var credentials = wrap('user', form2object(this));
+    var credentials = wrap('credentials', form2object(this));
     console.log(credentials);
     var cb = function (error, data) {
       if (error){
@@ -127,15 +159,16 @@ $(document).ready(function(){
       userID = data.user.id;
     };
 
-    tttapi.login(credentials, cb);
+    shsapi.login(credentials, cb);
     return false;
   });
 
 
    $('#register').on('submit', function(e) {
-    var credentials = wrap('credentials', form2object(this));
-    shsapi.register(credentials, callback);
     e.preventDefault();
+    var credentials = wrap('credentials', form2object(this));
+    console.log(credentials);
+    shsapi.register(credentials, callback);
     return false;
   });
 

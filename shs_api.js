@@ -16,7 +16,7 @@ var shsapi = {
     this.ajax({
       method: 'POST',
       // url: 'http://httpbin.org/post',
-      url: this.shs + '/users',
+      url: this.shs + '/register',
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify(credentials),
       dataType: 'json'
@@ -50,6 +50,17 @@ var shsapi = {
     this.ajax({
       method: 'GET',
       url: this.shs + '/songs' + params,
+      headers: {
+        "Content-Type": "application/json"
+      },
+      dataType: 'json'
+    }, callback);
+  },
+
+  getSingingId: function (params, callback) {
+    this.ajax({
+      method: 'GET',
+      url: this.shs + '/singings' + params,
       headers: {
         "Content-Type": "application/json"
       },

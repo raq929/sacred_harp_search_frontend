@@ -17,7 +17,28 @@
   border-color: #222;
 }
 
+
 #result {
   height:200px;
   width: 300px;
+}
+
+.title {
+  margin-left: 50px;
+  float: left;
+}
+
+.image {
+  float: left;
+  margin-left: 50px;
+}
+
+body {
+
+   background-image: url('images/wood_background.jpeg');
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }

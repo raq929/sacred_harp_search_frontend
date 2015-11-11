@@ -235,23 +235,21 @@
 
 <!-- Calls by Singing Template -->
 <script id="callsBySinging" type="text/x-handlebars-template">
-<h3>{{calls.song.number}} - {{calls.song.name}}</h3>
-        <table class="table table-striped table-hover tablesorter" id="callsBySingingTable" summary="Table of calls of the requested song">
+<h3>{{singing.name}} - {{singing.location}}</h3>
+        <table class="table table-striped table-hover tablesorter" id="callsBySingingTable" summary="Table of calls at the requested singing">
           <thead>
             <tr>
+                <th>Number</th>
+                <th>Title</th>
                 <th>Caller</th>
-                <th>Singing</th>
-                <th>Location</th>
-                <th>Date</th>
             </tr>
           </thead>
           <tbody class = "tableBody">
           {{#each calls}}
             <tr>
+                <td>{{number}}</td>
+                <td>{{name}}</td>
                 <td>{{caller}}</td>
-                <td>{{singing.name}}</td>
-                <td>{{singing.location}}</td>
-                <td>{{singing.date}}</td>
             </tr>
             {{/each}}
           </tbody>

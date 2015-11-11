@@ -156,9 +156,24 @@ $(document).ready(function(){
         displayCallers(data);
       }
     };
-
     e.preventDefault();
     shsapi.getCallers(cb);
+  });
+
+ $("#createSingingForm").on('submit', function(e){
+    var singing_data = wrap('singing',form2object(this));
+    console_log(singing_data);
+    var cb = function(error, data) {
+      if (error) {
+      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+      return;
+      }  else {
+        $('#result').val(JSON.stringify(data, null, 4));
+        displayCallsBySinging(data);
+      }
+    };
+    e.preventDefault();
+    shsapi.createSinging(singing_data, cb);
   });
 
 
@@ -199,7 +214,7 @@ $(document).ready(function(){
 
     };
     e.preventDefault();
-    credentials = {token: user.currentToken};
+    var credentials = {token: user.currentToken};
     shsapi.logout(credentials, cb);
     return false;
   });

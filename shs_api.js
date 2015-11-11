@@ -95,15 +95,17 @@ var shsapi = {
  },
 
 
-  createSinging: function (token, callback) {
+  createSinging: function (data, callback) {
+    json_string = JSON.stringify(data);
+    console.log(json_string);
     this.ajax({
       method: 'POST',
       url: this.shs + '/singings',
       headers: {
-        Authorization: 'Token token=' + token
+        Authorization: 'Token token=' + user.currentToken
       },
       contentType: 'application/json; charset=utf-8',
-      data: JSON.stringify({}),
+      data: JSON.stringify(data),
       dataType: 'json',
     }, callback);
   },

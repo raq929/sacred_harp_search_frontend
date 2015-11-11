@@ -54,3 +54,7 @@ h1 {
   color: #1E5FD4;
   text-shadow: 2px 2px #9DA4D2;
 }
+
+#logout {
+  display: none;
+}

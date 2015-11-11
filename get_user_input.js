@@ -1,5 +1,8 @@
 'use strict';
-var userID, currentToken;
+var user = {
+  userID: null,
+  currentToken: null
+};
 var callerId, songId, singingId;
 
 $(document).ready(function(){
@@ -44,7 +47,7 @@ $(document).ready(function(){
   };
 
   var errorHandler = function(error, data){
-
+     $('#result').val('status: ' + error.status + ', error: ' +error.error);
   };
 
   var getCallsbyCaller = function(error,data){
@@ -143,6 +146,22 @@ $(document).ready(function(){
     shsapi.getSingingId(params, getCallsbySinging);
   });
 
+  $('#allCallersButton').on('click', function(e){
+    var cb = function(error, data) {
+      if (error) {
+      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+      return;
+      }  else {
+        $('#result').val(JSON.stringify(data, null, 4));
+        displayCallers(data);
+      }
+    };
+
+    e.preventDefault();
+    shsapi.getCallers(cb);
+  });
+
+
   $('#loginForm').on('submit', function(e){
     e.preventDefault();
     var credentials = wrap('credentials', form2object(this));
@@ -150,16 +169,38 @@ $(document).ready(function(){
     var cb = function (error, data) {
       if (error){
         errorHandler(error);
-        return;
+        return false;
       }
-      errorHandler(null, data);
-      $('#loginForm').hide();
+      $("#loginForm").hide();
+      $("#register").hide();
+      $("#logout").show();
+
       console.log('' + data.user.token);
-      currentToken = data.user.token;
-      userID = data.user.id;
+      user.currentToken = data.user.token;
+      user.userID = data.user.id;
     };
 
     shsapi.login(credentials, cb);
+    return false;
+  });
+
+  $('#logout').on('submit', function(e){
+    var cb = function(error, data){
+      if (error) {
+        $('#result').val('status: ' + error.status + ', error: ' +error.error);
+        return false;
+      }  else {
+        user.currentToken = null;
+        user.userID = null;
+        $("#loginForm").show();
+        $("#register").show();
+        $("#logout").hide();
+      }
+
+    };
+    e.preventDefault();
+    credentials = {token: user.currentToken};
+    shsapi.logout(credentials, cb);
     return false;
   });
 

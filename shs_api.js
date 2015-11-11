@@ -34,6 +34,16 @@ var shsapi = {
     }, callback);
   },
 
+  logout: function(credentials, callback) {
+    this.ajax({
+      method: 'DELETE',
+      url: this.shs + '/logout/' + user.userID,
+      contentType: 'application/json; charset=utf-8',
+      data: JSON.stringify(credentials),
+      dataType: 'json'
+    }, callback);
+  },
+
   //Authenticated api actions
   getCallerId: function (params, callback) {
     this.ajax({
@@ -75,6 +85,14 @@ var shsapi = {
       dataType: 'json'
     }, callback);
   },
+
+  getCallers: function(callback){
+   this.ajax({
+      method: 'GET',
+      url: this.shs + '/callers/',
+      dataType: 'json'
+    }, callback);
+ },
 
 
   createSinging: function (token, callback) {

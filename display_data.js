@@ -48,7 +48,7 @@ var displayCallsByCaller = function(data){
   var newHTML = callsByCallerTemplate(data);
   $("#putCallsByCallerHere").html(newHTML);
   $(document).ready(function(){
-    $("#callerTable").tablesorter();
+    $("#callsByCallerTable").tablesorter();
   });
 };
 
@@ -56,8 +56,8 @@ var displayCallsBySong = function(data){
   var callsBySongTemplate= Handlebars.compile($('#callsBySong').html());
   var newHTML = callsBySongTemplate(data);
   $("#putCallsBySongHere").html(newHTML);
-   $(document).ready(function(){
-    $("#callerTable").tablesorter();
+  $(document).ready(function(){
+    $("#callsBySongTable").tablesorter();
   });
 };
 
@@ -65,7 +65,9 @@ var displayCallsBySinging = function(data){
   var callsBySongTemplate= Handlebars.compile($('#callsBySinging').html());
   var newHTML = callsBySingingTemplate(data);
   $("#putCallsBySingingHere").html(newHTML);
-  $
+  $(document).ready(function(){
+    $("#callsBySingingTable").tablesorter();
+  });
 };
 
 var displayCallers = function(data){
@@ -73,6 +75,9 @@ var displayCallers = function(data){
   var newHTML = allCallersTemplate(data);
   console.log(data);
   $("#putCallsByCallerHere").html(newHTML);
+  $(document).ready(function(){
+    $("#allCallersTable").tablesorter();
+  });
 };
 
 // var dd =  {

@@ -96,8 +96,9 @@ var shsapi = {
 
 
   createSinging: function (data, callback) {
-    json_string = JSON.stringify(data);
+    var json_string = JSON.stringify(data);
     console.log(json_string);
+
     this.ajax({
       method: 'POST',
       url: this.shs + '/singings',

@@ -161,8 +161,11 @@ $(document).ready(function(){
   });
 
  $("#createSingingForm").on('submit', function(e){
-    var singing_data = wrap('singing',form2object(this));
-    console_log(singing_data);
+    e.preventDefault();
+    var singing_data = wrap("singing", form2object(this));
+    singing_data.singing["book"] = $("#bookSelect option:selected").val();
+    singing_data.singing["csv"] = $("#csv").val();
+    console.log(singing_data);
     var cb = function(error, data) {
       if (error) {
       $('#result').val('status: ' + error.status + ', error: ' +error.error);
@@ -172,7 +175,6 @@ $(document).ready(function(){
         displayCallsBySinging(data);
       }
     };
-    e.preventDefault();
     shsapi.createSinging(singing_data, cb);
   });
 

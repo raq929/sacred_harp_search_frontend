@@ -211,11 +211,9 @@ $(document).ready(function(){
         $("#register").show();
         $("#logout").hide();
       }
-
     };
     e.preventDefault();
-    var credentials = {token: user.currentToken};
-    shsapi.logout(credentials, cb);
+    shsapi.logout(cb);
     return false;
   });
 

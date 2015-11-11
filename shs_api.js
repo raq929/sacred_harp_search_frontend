@@ -34,13 +34,13 @@ var shsapi = {
     }, callback);
   },
 
-  logout: function(credentials, callback) {
+  logout: function(callback) {
     this.ajax({
       method: 'DELETE',
       url: this.shs + '/logout/' + user.userID,
-      contentType: 'application/json; charset=utf-8',
-      data: JSON.stringify(credentials),
-      dataType: 'json'
+      headers: {
+        Authorization: 'Token token=' + user.currentToken
+      }
     }, callback);
   },
 

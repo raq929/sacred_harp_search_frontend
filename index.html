@@ -9,18 +9,15 @@
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
-
+<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-<div class="row">
-  <div class="title col-xs-4 col-sm-6">
-    <h1> Sacred Harp Search</h1>
-  </div>
-  <div class="image col-xs-4 col-sm-6">
-    <img src="images/old_sacred_harp.png" class="img-responsive">
-  </div>
-</div>
+<section id="banner">
+    <div class="title col-xs-4 col-sm-6">
+      <h1> Sacred Harp Search</h1>
+    </div>
+</section>
 <div class="container">
   <div class="example">
     <ul class="nav nav-tabs" id="myTab">
@@ -38,6 +35,7 @@
               <input name = 'name' type="text" placeholder="Caller name">
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
+            <button class="btn btn-primary">List All</button>
           </form>
         </div> <!-- ends form div   -->
         <div class="table-responsive tablesorter" id= "putCallsByCallerHere">
@@ -156,7 +154,9 @@
         </div>
       </form> <!-- End singing input div -->
       </div> <!-- End Admin tab div -->
-      <textarea id="result"></textarea>
+      <div>
+        <textarea id="result"></textarea>
+      </div>
     </div> <!-- End tab content div -->
   </div> <!-- End example div -->
 </div>  <!-- End container div -->

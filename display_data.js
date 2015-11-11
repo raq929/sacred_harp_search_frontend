@@ -43,23 +43,36 @@ var dataSongs = {"calls":[{"song":{"number":"146","name":"Hallelujah"},"singing"
  // callsBySongTemplate= Handlebars.compile($('#callsBySong').html()),
 
 
-
 var displayCallsByCaller = function(data){
   var callsByCallerTemplate= Handlebars.compile($('#callsByCaller').html());
   var newHTML = callsByCallerTemplate(data);
   $("#putCallsByCallerHere").html(newHTML);
+  $(document).ready(function(){
+    $("#callerTable").tablesorter();
+  });
 };
 
 var displayCallsBySong = function(data){
   var callsBySongTemplate= Handlebars.compile($('#callsBySong').html());
   var newHTML = callsBySongTemplate(data);
   $("#putCallsBySongHere").html(newHTML);
+   $(document).ready(function(){
+    $("#callerTable").tablesorter();
+  });
 };
 
 var displayCallsBySinging = function(data){
   var callsBySongTemplate= Handlebars.compile($('#callsBySinging').html());
   var newHTML = callsBySingingTemplate(data);
   $("#putCallsBySingingHere").html(newHTML);
+  $
+};
+
+var displayCallers = function(data){
+  var allCallersTemplate = Handlebars.compile($('#allCallers').html());
+  var newHTML = allCallersTemplate(data);
+  console.log(data);
+  $("#putCallsByCallerHere").html(newHTML);
 };
 
 // var dd =  {

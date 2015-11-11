@@ -1,7 +1,8 @@
 'use strict';
 var user = {
   userID: null,
-  currentToken: null
+  currentToken: null,
+  admin: false
 };
 var callerId, songId, singingId;
 
@@ -195,6 +196,7 @@ $(document).ready(function(){
       console.log('' + data.user.token);
       user.currentToken = data.user.token;
       user.userID = data.user.id;
+      user.admin = data.user.admin;
     };
 
     shsapi.login(credentials, cb);

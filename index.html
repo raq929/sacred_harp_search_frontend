@@ -121,7 +121,7 @@
             </div>
           </div> <!-- end form-group -->
         </form>  <!-- end loginForm -->
-        <form class="form-horizontal" id="createSingingForm">
+
         <form class="form-horizontal" id="logout">
           <div class="form-group">
             <div class="col-xs-offset-2 col-xs-10">
@@ -129,36 +129,47 @@
             </div>
           </div>
         </form>
+
+        <form class="form-horizontal" id="createSingingForm">
           <div class="form-group"> <!-- Begin Create Singing form -->
             <label for="inputSinging" class="control-label col-xs-2">Name of Singing</label>
             <div class="col-xs-10">
-              <input type="text" class="form-control" id="inputSinging" placeholder="Name of Singing">
+              <input type="text" name="name"class="form-control" id="inputSinging" placeholder="Name of Singing">
             </div>
           </div>
           <div class="form-group">
             <label for="inputLocation" class="control-label col-xs-2">Location</label>
             <div class="col-xs-10">
-              <input type="text" class="form-control" id="inputLocation" placeholder="Location">
+              <input type="text" name="location" class="form-control" id="inputLocation" placeholder="Location">
             </div>
           </div>
-        <div class="form-group">
-            <label for="inputDate" class="control-label col-xs-2">Date of Singing</label>
+          <div class="form-group">
+              <label for="inputDate" class="control-label col-xs-2">Date of Singing</label>
+              <div class="col-xs-10">
+                <input type="text" name="date"class="form-control" id="inputDate" placeholder="October 10-11, 2015">
+              </div>
+          </div>
+          <div class="form-group">
+            <label for="sel1" class="control-label col-xs-2">Book:</label>
             <div class="col-xs-10">
-              <input type="text" class="form-control" id="inputDate" placeholder="MM-DD-YYYY">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="csv" class="col-xs-2 control-label">Minutes in CSV format</label>
-            <div class="col-sm-10">
-              <textarea name="csv" class="form-control" id="csv"></textarea>
+              <select class="form-control" id="bookSelect" name="book">
+                <option>1991 Sacred Harp</option>
+                <option>Shenandoah Harmony</option>
+              </select>
             </div>
           </div>
-        <div class="form-group">
-            <div class="col-xs-offset-2 col-xs-10">
-              <button type="submit" id="submitSinging" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
-      </form> <!-- End singing input div -->
+          <div class="form-group">
+              <label for="csv" class="col-xs-2 control-label">Minutes in CSV format</label>
+              <div class="col-sm-10">
+                <textarea name="csv" class="form-control" id="csv"></textarea>
+              </div>
+          </div>
+          <div class="form-group">
+              <div class="col-xs-offset-2 col-xs-10">
+                <button type="submit" id="submitSinging" class="btn btn-primary">Submit</button>
+              </div>
+          </div>
+        </form> <!-- End singing input div -->
       </div> <!-- End Admin tab div -->
       <div>
         <textarea id="result"></textarea>

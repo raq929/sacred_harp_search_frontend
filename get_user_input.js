@@ -220,6 +220,7 @@ $(document).ready(function(){
       $("#loginForm").hide();
       $("#register").hide();
       $("#logout").show();
+      $("#createSingingForm").show();
 
       console.log('' + data.user.token);
       user.currentToken = data.user.token;
@@ -242,6 +243,7 @@ $(document).ready(function(){
         $("#loginForm").show();
         $("#register").show();
         $("#logout").hide();
+        $("#createSingingForm").hide();
       }
     };
     e.preventDefault();

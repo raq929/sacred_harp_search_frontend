@@ -113,9 +113,7 @@ $(document).ready(function(){
     }
     else {
       $('#result').val(JSON.stringify(data, null, 4));
-      console.log(data)
       route = getRoute(data);
-      console.log(route);
       shsapi.getCalls(route, cb);
     }
   };
@@ -153,7 +151,7 @@ $(document).ready(function(){
     shsapi.getSingingsByName(params, cb);
   });
 
-  $('.seeCalls').on('click', function(e){
+  $(".seeCalls").on("click", function(e){
     console.log("YOu clicked a row!")
     e.preventDefault();
     var singing_id= event.target['singing_id'].val();

@@ -62,7 +62,8 @@ var displayCallsBySong = function(data){
 };
 
 var displayCallsBySinging = function(data){
-  var callsBySongTemplate= Handlebars.compile($('#callsBySinging').html());
+  console.log(data)
+  var callsBySingingTemplate= Handlebars.compile($('#callsBySinging').html());
   var newHTML = callsBySingingTemplate(data);
   $("#putCallsBySingingHere").html(newHTML);
   $(document).ready(function(){
@@ -81,14 +82,30 @@ var displayCallers = function(data){
 };
 
 var displaySingings = function(data) {
+
   var singingsByNameTemplate = Handlebars.compile($('#singingsByName').html());
   var newHTML = singingsByNameTemplate(data);
-  console.log(data);
   $("#putCallsBySingingHere").html(newHTML);
+
   $(document).ready(function(){
     $("#singingsByNameTable").tablesorter();
-  });
-};
+    $(".seeCalls").on("click", function(event){
+      event.preventDefault();
+      var singing_id= $(event.target).data('singing_id');
+      var route = "/singings/" + singing_id;
+      var cb = function(error, data) {
+        if (error) {
+          $('#result').val('status: ' + error.status + ', error: ' +error.error);
+          return;
+          }  else {
+            $('#result').val(JSON.stringify(data, null, 4));
+            displayCallsBySinging(data);
+          }
+        };
+        shsapi.getCalls(route, cb);
+      });
+    });
+  };
 
 // var dd =  {
 

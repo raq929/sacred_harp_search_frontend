@@ -94,7 +94,6 @@ var shsapi = {
     }, callback);
  },
 
-
   createSinging: function (data, callback) {
     var json_string = JSON.stringify(data);
     console.log(json_string);

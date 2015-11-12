@@ -22,11 +22,9 @@ var shsHelpers = {
       }
     });
     return data;
-  }
+  },
 
-};
-
-   var getRoute = function(data){
+  getRoute: function(data){
     var route;
 
     if ('caller' in data){
@@ -37,11 +35,14 @@ var shsHelpers = {
     } else if ('song' in data)
       route = "/songs/" + data.song.id;
     return route;
-  };
+  },
 
-  var errorHandler = function(error, data){
+  errorHandler: function(error, data){
      $('#result').val('status: ' + error.status + ', error: ' +error.error);
-  };
+  }
+
+};
+
 
  var getCallsbySinging = function(error, data){
     var cb = function(error, data) {
@@ -55,12 +56,12 @@ var shsHelpers = {
     };
     var route;
     if (error){
-      errorHandler(error);
+      shsHelpers.errorHandler(error);
       return;
     }
     else {
       $('#result').val(JSON.stringify(data, null, 4));
-      route = getRoute(data);
+      route = shsHelpers.getRoute(data);
       shsapi.getCalls(route, cb);
     }
   };
@@ -89,12 +90,12 @@ $(document).ready(function(){
     };
     var route;
     if (error){
-      errorHandler(error);
+      shsHelpers.errorHandler(error);
       return;
     }
     else {
       $('#result').val(JSON.stringify(data, null, 4));
-      route = getRoute(data);
+      route = shsHelpers.getRoute(data);
       shsapi.getCalls(route, cb);
     }
   };
@@ -111,12 +112,12 @@ $(document).ready(function(){
     };
     var route;
     if (error){
-      errorHandler(error);
+      shsHelpers.errorHandler(error);
       return;
     }
     else {
       $('#result').val(JSON.stringify(data, null, 4));
-      route = getRoute(data);
+      route = shsHelpers.getRoute(data);
       console.log(route);
       shsapi.getCalls(route, cb);
     }
@@ -213,7 +214,7 @@ $(document).ready(function(){
     console.log(credentials);
     var cb = function (error, data) {
       if (error){
-        errorHandler(error);
+        shsHelpers.errorHandler(error);
         return false;
       }
       $("#loginForm").hide();

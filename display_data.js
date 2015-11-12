@@ -1,19 +1,15 @@
 "use strict"
 
-var singingData;
-
-var editSingingButtonHandler = function(){
-  var editSingingFormTemplate = Handlebars.compile($('#editSingingForm')).html();
-  var newHTML = editSingingFormTemplate(singingData);
-};
+// These are functions that receive data from the server and display it
+// using jQuery and Handlebars
 
 var displayCallsByCaller = function(data){
   var callsByCallerTemplate= Handlebars.compile($('#callsByCaller').html());
   var newHTML = callsByCallerTemplate(data);
   $("#putCallsByCallerHere").html(newHTML);
+  // These functions need to happen AFTER the html loads.
   $(document).ready(function(){
     $("#callsByCallerTable").tablesorter();
-    $('#editSinging').on('click', editSingingButtonHandler);
   });
 };
 
@@ -26,14 +22,32 @@ var displayCallsBySong = function(data){
   });
 };
 
+// This stores singing data to later be used by the editSinging template
+var editSingingData;
+
+var editSingingButtonHandler = function(e){
+  e.preventDefault();
+  console.log("This funtion is being called");
+  var editSingingFormTemplate = Handlebars.compile($('#editSingingFormTemplate').html());
+  var newHTML = editSingingFormTemplate(editSingingData);
+  debugger;
+  $("putCallsBySingingHere").html(newHTML);
+  return false;
+};
+
 var displayCallsBySinging = function(data){
-  console.log(data)
+   // stores singing data for access by editSingingForm
+  editSingingData = {name: data.calls[0].singing.name,
+                 location: data.calls[0].singing.location,
+                 date: data.calls[0].singing.date
+               };
+  console.log(editSingingData);
   var callsBySingingTemplate= Handlebars.compile($('#callsBySinging').html());
   var newHTML = callsBySingingTemplate(data);
   $("#putCallsBySingingHere").html(newHTML);
   $(document).ready(function(){
+    $("#triggerEditSingingForm").on('submit', editSingingButtonHandler);
     $("#callsBySingingTable").tablesorter();
-    $("#e")
   });
 };
 
@@ -48,7 +62,7 @@ var displayCallers = function(data){
 };
 
 var displaySingings = function(data) {
-
+  // compliles and uses handlebars template
   var singingsByNameTemplate = Handlebars.compile($('#singingsByName').html());
   var newHTML = singingsByNameTemplate(data);
   $("#putCallsBySingingHere").html(newHTML);
@@ -65,7 +79,6 @@ var displaySingings = function(data) {
           return;
           }  else {
             $('#result').val(JSON.stringify(data, null, 4));
-            singingData = data;
             displayCallsBySinging(data);
           }
         };

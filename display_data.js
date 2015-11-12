@@ -3,6 +3,7 @@
 // These are functions that receive data from the server and display it
 // using jQuery and Handlebars
 
+
 var displayCallsByCaller = function(data){
   var callsByCallerTemplate= Handlebars.compile($('#callsByCaller').html());
   var newHTML = callsByCallerTemplate(data);
@@ -25,26 +26,35 @@ var displayCallsBySong = function(data){
 // This stores singing data to later be used by the editSinging template
 var editSingingData;
 
-var editSingingButtonHandler = function(e){
+var editSingingFormSubmit = function(e){
   e.preventDefault();
-  console.log("This funtion is being called");
+  var editedSingingData = shsHelpers.wrap("singing", shsHelpers.form2object(this));
+  console.log(editSingingData);
+  shsapi.editSinging(editSingingData.singing_id, editedSingingData, user.currentToken, getCallsbySinging);
+};
+
+
+var triggerSingingFormHandler = function(e){
+  e.preventDefault();
   var editSingingFormTemplate = Handlebars.compile($('#editSingingFormTemplate').html());
   var newHTML = editSingingFormTemplate(editSingingData);
   $("#putCallsBySingingHere").html(newHTML);
+  $("#editSingingForm").on('submit', editSingingFormSubmit);
 };
 
 var displayCallsBySinging = function(data){
-   // stores singing data for access by editSingingForm
+
+  // stores singing data for access by editSingingForm
   editSingingData = {name: data.calls[0].singing.name,
                  location: data.calls[0].singing.location,
-                 date: data.calls[0].singing.date
+                 date: data.calls[0].singing.date,
+                 singing_id: data.calls[0].singing.id,
                };
-  console.log(editSingingData);
   var callsBySingingTemplate= Handlebars.compile($('#callsBySinging').html());
   var newHTML = callsBySingingTemplate(data);
   $("#putCallsBySingingHere").html(newHTML);
   $(document).ready(function(){
-    $("#triggerEditSingingForm").on('submit', editSingingButtonHandler);
+    $("#triggerEditSingingForm").on('submit', triggerSingingFormHandler);
     $("#callsBySingingTable").tablesorter();
   });
 };

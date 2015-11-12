@@ -6,18 +6,14 @@ var user = {
 };
 var callerId, songId, singingId;
 
-$(document).ready(function(){
+var shsHelpers = {
+  wrap: function (root, formData) {
+    var wrapper = {};
+    wrapper[root] = formData;
+    return wrapper;
+  },
 
- var callback = function callback(error, data) {
-    if (error) {
-      console.log(error);
-      $('#result').val('status: ' + error.status + ', error: ' +error.error);
-      return;
-    }
-    $('#result').val(JSON.stringify(data, null, 4));
-  };
-
-  var form2object = function(form) {
+  form2object: function(form) {
     var data = {};
     $(form).find('input').each(function(index, element) {
       var type = $(this).attr('type');
@@ -26,15 +22,11 @@ $(document).ready(function(){
       }
     });
     return data;
-  };
+  }
 
- var wrap = function wrap(root, formData) {
-    var wrapper = {};
-    wrapper[root] = formData;
-    return wrapper;
-  };
+};
 
-  var getRoute = function(data){
+   var getRoute = function(data){
     var route;
 
     if ('caller' in data){
@@ -49,6 +41,40 @@ $(document).ready(function(){
 
   var errorHandler = function(error, data){
      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+  };
+
+ var getCallsbySinging = function(error, data){
+    var cb = function(error, data) {
+      if (error) {
+      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+      return;
+      }  else {
+        $('#result').val(JSON.stringify(data, null, 4));
+        displayCallsBySinging(data);
+      }
+    };
+    var route;
+    if (error){
+      errorHandler(error);
+      return;
+    }
+    else {
+      $('#result').val(JSON.stringify(data, null, 4));
+      route = getRoute(data);
+      shsapi.getCalls(route, cb);
+    }
+  };
+
+
+$(document).ready(function(){
+
+ var callback = function callback(error, data) {
+    if (error) {
+      console.log(error);
+      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+      return;
+    }
+    $('#result').val(JSON.stringify(data, null, 4));
   };
 
   var getCallsbyCaller = function(error,data){
@@ -96,26 +122,15 @@ $(document).ready(function(){
     }
   };
 
- var getCallsbySinging = function(error, data){
-    var cb = function(error, data) {
-      if (error) {
-      $('#result').val('status: ' + error.status + ', error: ' +error.error);
-      return;
-      }  else {
-        $('#result').val(JSON.stringify(data, null, 4));
-        displayCallsBySinging(data);
-      }
-    };
-    var route;
-    if (error){
-      errorHandler(error);
-      return;
-    }
-    else {
-      $('#result').val(JSON.stringify(data, null, 4));
-      route = getRoute(data);
-      shsapi.getCalls(route, cb);
-    }
+  var editSingingFormSubmit = function(e){
+    debugger;
+    e.preventDefault();
+    var editedSingingData = shsHelpers.wrap('singing', shsHelpform2object(this));
+    console.log("editedSinging " + editedSingingData);
+    console.log("id= " + editSingingData.singing_id);
+    console.log("token=" + user.currentToken);
+    debugger;
+    shsapi.editSinging(editSingingData.singing_id, editSingingData, user.currentToken, displayCallsBySinging);
   };
 
   $('#callerSearch').on('submit', function(e) {
@@ -175,7 +190,7 @@ $(document).ready(function(){
 
  $("#createSingingForm").on('submit', function(e){
     e.preventDefault();
-    var singing_data = wrap("singing", form2object(this));
+    var singing_data = shsHelpers.wrap("singing", shsHelpform2object(this));
     singing_data.singing["book"] = $("#bookSelect option:selected").val();
     singing_data.singing["csv"] = $("#csv").val();
     console.log(singing_data);
@@ -194,7 +209,7 @@ $(document).ready(function(){
 
   $('#loginForm').on('submit', function(e){
     e.preventDefault();
-    var credentials = wrap('credentials', form2object(this));
+    var credentials = shsHelpers.wrap('credentials', shsHelpers.form2object(this));
     console.log(credentials);
     var cb = function (error, data) {
       if (error){
@@ -236,7 +251,7 @@ $(document).ready(function(){
 
    $('#register').on('submit', function(e) {
     e.preventDefault();
-    var credentials = wrap('credentials', form2object(this));
+    var credentials = shsHelpers.wrap('credentials', shsHelpform2object(this));
     console.log(credentials);
     shsapi.register(credentials, callback);
     return false;

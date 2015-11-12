@@ -153,6 +153,14 @@ $(document).ready(function(){
     shsapi.getSingingsByName(params, cb);
   });
 
+  $('.seeCalls').on('click', function(e){
+    console.log("YOu clicked a row!")
+    e.preventDefault();
+    var singing_id= event.target['singing_id'].val();
+    console.log(params);
+    shsapi.getSingingsByName(params, cb);
+  });
+
   $('#allCallersButton').on('click', function(e){
     var cb = function(error, data) {
       if (error) {

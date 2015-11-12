@@ -60,12 +60,13 @@
     <div id="Singing" class="tab-pane fade">
       <h3>Singing</h3>
       <div>
-          <form class="form-inline" role="form" id="singingSearch">
-            <div class="form-group">
-              <input name = 'name' type="text" placeholder="Name of Singing">
-            <button type="submit" class="btn btn-primary">Search</button>
-          </form>
-        </div> <!-- ends form div   -->
+        <form class="form-inline" role="form" id="singingSearch">
+          <div class="form-group">
+            <input name = 'name' type="text" placeholder="Name of Singing">
+            </div>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+      </div> <!-- ends form div   -->
       <div id="putCallsBySingingHere">
 
       </div>
@@ -169,6 +170,7 @@
         </form> <!-- End singing input div -->
       </div> <!-- End Admin tab div -->
       <div>
+        <a href="http://fasola.org/shmha/">More information about Sacred Harp singing</a>
         <textarea id="result"></textarea>
       </div>
     </div> <!-- End tab content div -->
@@ -317,35 +319,34 @@
 
 <!-- Edit singing form -->
 <script id="editSingingFormTemplate" type="text/x-handlebars-template">
+  <h3>Edit Singing</h3>
+  <form class="form-horizontal" id="editSingingForm">
 
-<form class="form-horizontal" id="editSingingForm">
-    <h3>Edit Singing</h3>
-
-          <div class="form-group">
-            <label for="inputSinging" class="control-label col-xs-2">{{name}}</label>
-            <div class="col-xs-10">
-              <input type="text" name="name"class="form-control" id="inputSinging" placeholder="Edit singing name">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputLocation" class="control-label col-xs-2">{{location}}</label>
-            <div class="col-xs-10">
-              <input type="text" name="location" class="form-control" id="inputLocation" placeholder="Edit location">
-            </div>
-          </div>
-          <div class="form-group">
-              <label for="inputDate" class="control-label col-xs-2">{{date}}</label>
-              <div class="col-xs-10">
-                <input type="text" name="text"class="form-control" id="inputDate" placeholder="Edit date">
-              </div>
-          </div>
-          <div class="form-group">
-              <div class="col-xs-offset-2 col-xs-10">
-                <button type="submit" id="editSingingFormSubmit" class="btn btn-primary">Edit Singing</button>
-              </div>
-          </div>
-        </form>
- </script>
+    <div class="form-group">
+      <label for="inputSinging" class="control-label col-xs-2">{{name}}</label>
+      <div class="col-xs-10">
+        <input type="text" name="name" class="form-control" id="inputSinging" placeholder="Edit singing name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputLocation" class="control-label col-xs-2">{{location}}</label>
+      <div class="col-xs-10">
+        <input type="text" name="location" class="form-control" id="inputLocation" placeholder="Edit location">
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="inputDate" class="control-label col-xs-2">{{date}}</label>
+        <div class="col-xs-10">
+          <input type="text" name="text"class="form-control" id="inputDate" placeholder="Edit date">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-offset-2 col-xs-10">
+          <button type="submit" id="editSingingFormSubmit" class="btn btn-primary">Edit Singing</button>
+        </div>
+    </div>
+  </form>
+</script>
 
 <!-- Latest compiled and minified JavaScript -->
 <!-- jQuery -->

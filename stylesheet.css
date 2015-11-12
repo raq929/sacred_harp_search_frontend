@@ -43,3 +43,7 @@ h1 {
 #createSingingForm {
   display: none;
 }
+
+#fasolaLink {
+  padding: 50px;
+}

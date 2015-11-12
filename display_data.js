@@ -30,9 +30,7 @@ var editSingingButtonHandler = function(e){
   console.log("This funtion is being called");
   var editSingingFormTemplate = Handlebars.compile($('#editSingingFormTemplate').html());
   var newHTML = editSingingFormTemplate(editSingingData);
-  debugger;
-  $("putCallsBySingingHere").html(newHTML);
-  return false;
+  $("#putCallsBySingingHere").html(newHTML);
 };
 
 var displayCallsBySinging = function(data){

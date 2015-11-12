@@ -285,7 +285,7 @@
 <!-- List of singings table -->
 <script id="singingsByName" type="text/x-handlebars-template">
     <div>
-    <h3>singings.0.name</h3>
+    <h3>{{singings.0.name}}</h3>
     <h4>Click on a singing to see calls</h4>
     </div>
         <table class="table table-striped table-hover tablesorter" id="singingsByNameTable" summary="Table of singings by name">
@@ -298,10 +298,10 @@
           </thead>
           <tbody class = "tableBody">
           {{#each singings}}
-            <tr class="seeCalls" singing_id="{{singing.id}}">
-                <td>{{singing.name}}</td>
-                <td>{{singing.location}}</td>
-                <td>{{singing.date}}</td>
+            <tr class="seeCalls" singing_id="{{id}}">
+                <td>{{name}}</td>
+                <td>{{location}}</td>
+                <td>{{date}}</td>
             </tr>
             {{/each}}
           </tbody>

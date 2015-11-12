@@ -80,6 +80,16 @@ var displayCallers = function(data){
   });
 };
 
+var displaySingings = function(data) {
+  var singingsByNameTemplate = Handlebars.compile($('#singingsByName').html());
+  var newHTML = singingsByNameTemplate(data);
+  console.log(data);
+  $("#putCallsBySingingHere").html(newHTML);
+  $(document).ready(function(){
+    $("#singingsByNameTable").tablesorter();
+  });
+};
+
 // var dd =  {
 
 //  // createSongString: function(memo, song){

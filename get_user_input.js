@@ -113,13 +113,12 @@ $(document).ready(function(){
     }
     else {
       $('#result').val(JSON.stringify(data, null, 4));
+      console.log(data)
       route = getRoute(data);
       console.log(route);
       shsapi.getCalls(route, cb);
     }
   };
-
-
 
   $('#callerSearch').on('submit', function(e) {
     e.preventDefault();
@@ -139,12 +138,19 @@ $(document).ready(function(){
   });
 
   $('#singingSearch').on('submit', function(e) {
+    var cb = function(error, data) {
+      if (error) {
+      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+      return;
+      }  else {
+        $('#result').val(JSON.stringify(data, null, 4));
+        displaySingings(data);
+      }
+    };
     e.preventDefault();
-    var params = "?name=" + event.target['name'].value
-      + '&date=' + event.target['date'].value;
+    var params = "?name=" + event.target['name'].value;
     console.log(params);
-
-    shsapi.getSingingId(params, getCallsbySinging);
+    shsapi.getSingingsByName(params, cb);
   });
 
   $('#allCallersButton').on('click', function(e){

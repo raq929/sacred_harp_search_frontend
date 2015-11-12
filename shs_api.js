@@ -67,7 +67,7 @@ var shsapi = {
     }, callback);
   },
 
-  getSingingId: function (params, callback) {
+  getSingingsByName: function (params, callback) {
     this.ajax({
       method: 'GET',
       url: this.shs + '/singings' + params,

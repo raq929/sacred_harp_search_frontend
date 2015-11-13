@@ -22,7 +22,7 @@ body {
 }
 
 #banner {
-  background-image: url("/images/banner.jpeg");
+  background-image: url("./images/banner.jpeg");
   background-repeat: none;
   height:300px;
   background-size: cover;

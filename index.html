@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sacred Harp Search</title>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+<section id="banner">
+    <div class="title col-xs-4 col-sm-6">
+      <h1> Sacred Harp Search</h1>
+    </div>
+</section>
+<div class="container">
+  <div class="example">
+    <ul class="nav nav-tabs" id="myTab">
+      <li class="active"><a data-toggle="tab" href="#Caller">Caller</a></li>
+      <li><a data-toggle="tab" href="#Song">Song</a></li>
+      <li><a data-toggle="tab" href="#Singing">Singing</a></li>
+      <li><a data-toggle="tab" href="#Admin">Admin</a><li>
+    </ul>
+    <div class="tab-content">
+      <div id="Caller" class="tab-pane fade in active">
+        <h3>Caller</h3>
+        <div>
+          <form class="form-inline" role="form" id="callerSearch">
+            <div class="form-group">
+              <input name = 'name' type="text" placeholder="Caller name">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+            <button id="allCallersButton" class="btn btn-primary">List All</button>
+          </form>
+        </div> <!-- ends form div   -->
+        <div class="table-responsive tablesorter" id= "putCallsByCallerHere">
+        </div>
+    </div>  <!-- ends Caller tab-->
+
+    <div id="Song" class="tab-pane fade">
+      <h3>Song</h3>
+      <div>
+          <form class="form-inline" role="form" id="songSearch">
+            <div class="form-group">
+              <input name = 'number' type="text" placeholder="Song number">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+        </div> <!-- ends form div   -->
+      <div id="putCallsBySongHere"class="table-responsive tablesorter">
+
+      </div>
+    </div> <!-- End Song Tab -->
+
+    <div id="Singing" class="tab-pane fade">
+      <h3>Singing</h3>
+      <div>
+        <form class="form-inline" role="form" id="singingSearch">
+          <div class="form-group">
+            <input name = 'name' type="text" placeholder="Name of Singing">
+            </div>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+      </div> <!-- ends form div   -->
+      <div id="putCallsBySingingHere">
+
+      </div>
+    </div> <!-- End of Singing Tab -->
+
+    <div id="Admin" class="tab-pane fade">
+      <h3>Admin</h3>
+        <form class="form-horizontal" id="register">
+          <div class='form-group'>
+            <label for="inputEmail" class="control-label col-xs-2">Email</label>
+            <div class="col-xs-10">
+            <input name="email" class="form-control" type="text" placeholder="email">
+            </div>
+          </div> <!-- end form-group -->
+          <div class='form-group'>
+            <label for="inputPassword" class="control-label col-xs-2">Password</label>
+            <div class="col-xs-10">
+            <input name="password" class="form-control" type="password" placeholder="password">
+            </div>
+          </div> <!-- end form-group -->
+          <div class='form-group'>
+            <label for="inputPassword" class="control-label col-xs-2">Confirm Password</label>
+            <div class="col-xs-10">
+             <input name="password_confirmation" class="form-control" type="password" placeholder="password confirmation">
+            </div>
+          </div> <!-- end form-group -->
+          <div class='form-group'>
+            <div class="col-xs-offset-2 col-xs-10">
+              <input name="register" type="submit" value="Register" class="btn btn-primary">
+            </div>
+          </div> <!-- end form-group -->
+
+        </form>
+        <form class="form-horizontal" id="loginForm">
+          <div class="form-group">
+            <label for="inputEmail" class="control-label col-xs-2">Email</label>
+            <div class="col-xs-10">
+              <input name='email' type="email" class="form-control" placeholder="Email">
+            </div>
+          </div> <!-- end form-group -->
+          <div class="form-group">
+            <label for="inputPassword" class="control-label col-xs-2">Password</label>
+            <div class="col-xs-10">
+                <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Password">
+            </div>
+          </div> <!-- end form-group -->
+          <div class="form-group">
+            <div class="col-xs-offset-2 col-xs-10">
+              <button type:"submit" id="loginButton" class="btn btn-primary">Login</button>
+            </div>
+          </div> <!-- end form-group -->
+        </form>  <!-- end loginForm -->
+
+        <form class="form-horizontal" id="logout">
+          <div class="form-group">
+            <div class="col-xs-offset-2 col-xs-10">
+             <button type:"submit" id="logoutButton" class="btn btn-primary">Logout</button>
+            </div>
+          </div>
+        </form>
+
+        <form class="form-horizontal" id="createSingingForm">
+          <div class="form-group"> <!-- Begin Create Singing form -->
+            <label for="inputSinging" class="control-label col-xs-2">Name of Singing</label>
+            <div class="col-xs-10">
+              <input type="text" name="name"class="form-control" id="inputSinging" placeholder="Name of Singing">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputLocation" class="control-label col-xs-2">Location</label>
+            <div class="col-xs-10">
+              <input type="text" name="location" class="form-control" id="inputLocation" placeholder="Location">
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="inputDate" class="control-label col-xs-2">Date of Singing</label>
+              <div class="col-xs-10">
+                <input type="text" name="date"class="form-control" id="inputDate" placeholder="October 10-11, 2015">
+              </div>
+          </div>
+          <div class="form-group">
+            <label for="sel1" class="control-label col-xs-2">Book:</label>
+            <div class="col-xs-10">
+              <select class="form-control" id="bookSelect" name="book">
+                <option>1991 Sacred Harp</option>
+                <option>Shenandoah Harmony</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="csv" class="col-xs-2 control-label">Minutes in CSV format</label>
+              <div class="col-sm-10">
+                <textarea name="csv" class="form-control" id="csv"></textarea>
+              </div>
+          </div>
+          <div class="form-group">
+              <div class="col-xs-offset-2 col-xs-10">
+                <button type="submit" id="submitSinging" class="btn btn-primary">Submit</button>
+              </div>
+          </div>
+        </form> <!-- End singing input div -->
+      </div> <!-- End Admin tab div -->
+      <div class="col-xs-10" id="fasolaLink">
+        <a href="http://fasola.org/shmha/">More information about Sacred Harp singing</a>
+      </div>
+    </div> <!-- End tab content div -->
+  </div> <!-- End example div -->
+</div>  <!-- End container div -->
+
+  <!-- Handlebars templates -->
+
+  <!-- Search by caller template -->
+<script id="callsByCaller" type="text/x-handlebars-template">
+        <h4>Calls by {{calls.0.caller}}</h4>
+        <table class="table table-striped table-hover tablesorter" id="callsByCallerTable" summary="Table of calls made by the requested caller.">
+            <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Song</th>
+                    <th>Book</th>
+                    <th>Singing</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody class = 'tableBody'>
+                {{#each calls}}
+                <tr>
+                    <td>{{song.number}}</td>
+                    <td>{{song.name}}</td>
+                    <td>{{song.book.name}}</td>
+                    <td>{{singing.name}}</td>
+                    <td>{{singing.location}}</td>
+                    <td>{{singing.date}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+      </div>
+</script>
+
+<!-- Search by song template -->
+<script id="callsBySong" type="text/x-handlebars-template">
+<h3>Calls of {{calls.0.song.name}} - {{calls.0.song.number}}</h3>
+        <table class="table table-striped table-hover tablesorter" id="callsBySongTable" summary="Table of calls of the requested song">
+          <thead>
+            <tr>
+                <th>Caller</th>
+                <th>Singing</th>
+                <th>Location</th>
+                <th>Date</th>
+            </tr>
+          </thead>
+          <tbody class = "tableBody">
+          {{#each calls}}
+            <tr>
+                <td>{{caller}}</td>
+                <td>{{singing.name}}</td>
+                <td>{{singing.location}}</td>
+                <td>{{singing.date}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+</script>
+
+<!-- Calls by Singing Template -->
+<script id="callsBySinging" type="text/x-handlebars-template">
+<div class="table-responsive tablesorter">
+  <h3>{{calls.0.singing.name}} - {{calls.0.singing.location}}
+  <h4>{{calls.0.singing.date}} - {{calls.0.song.book.name}}</h3>
+  <div class="col-xs-10">
+   <form class="form-inline " id="triggerEditSingingForm">
+       <div class="form-group">
+            <div class="col-xs-offset-2 col-xs-10">
+              <button type="submit" id="editSingingButton" class="btn btn-primary">Edit Singing</button>
+            </div>
+        </div>
+    </form>
+  </div>
+  <table class="table table-striped table-hover tablesorter" id="callsBySingingTable" summary="Table of calls at the requested singing">
+    <thead>
+      <tr>
+          <th>Caller</th>
+          <th>Number</th>
+          <th>Title</th>
+      </tr>
+    </thead>
+    <tbody class = "tableBody">
+    {{#each calls}}
+      <tr>
+          <td>{{caller}}</td>
+          <td>{{song.number}}</td>
+          <td>{{song.name}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+
+</script>
+
+<!-- display callers table -->
+<script id="allCallers" type="text/x-handlebars-template">
+  <h3>All Callers</h3>
+        <table class="table table-striped table-hover tablesorter" id="allCallersTable" summary="All callers">
+          <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+          </thead>
+          <tbody class = "tableBody">
+          {{#each callers}}
+            <tr>
+                <td>{{name}}</td>
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+</script>
+
+<!-- List of singings table -->
+<script id="singingsByName" type="text/x-handlebars-template">
+    <div>
+    <h3>{{singings.0.name}}</h3>
+    </div>
+        <table class="table table-striped table-hover tablesorter" id="singingsByNameTable" summary="Table of singings by name">
+          <thead>
+            <tr>
+                <th>Singing</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>See calls<th>
+            </tr>
+          </thead>
+          <tbody class = "tableBody">
+          {{#each singings}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{location}}</td>
+                <td>{{date}}</td>
+                <td><button class="seeCalls btn btn-primary" data-singing_id="{{id}}">See Calls</button>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+</script>
+
+<!-- Edit singing form -->
+<script id="editSingingFormTemplate" type="text/x-handlebars-template">
+  <h3>Edit Singing</h3>
+  <form class="form-horizontal" id="editSingingForm">
+
+    <div class="form-group">
+      <label for="inputSinging" class="control-label col-xs-2">{{name}} </label>
+      <div class="col-xs-10">
+        <input type="text" name="name" class="form-control" id="inputSinging" value="{{name}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputLocation" class="control-label col-xs-2" >{{location}}</label>
+      <div class="col-xs-10">
+        <input type="text" name="location" class="form-control" id="inputLocation" value="{{location}}">
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="inputDate" class="control-label col-xs-2">{{date}}</label>
+        <div class="col-xs-10">
+          <input type="text" name="text"class="form-control" id="inputDate" value="{{date}}">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-offset-2 col-xs-10">
+          <button type="submit" id="editSingingFormSubmit" class="btn btn-primary">Edit Singing</button>
+        </div>
+    </div>
+  </form>
+</script>
+
+<!-- Latest compiled and minified JavaScript -->
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-ivk71nXhz9nsyFDoYoGf2sbjrR9ddh+XDkCcfZxjvcM=" crossorigin="anonymous"></script>
+<!-- handlebars -->
+<script src="handlebars-v4.0.4.js"></script>
+<!-- Bootstrap -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<!-- Tablesorter -->
+<script type="text/javascript" src="jquery.tablesorter.js"></script>
+<!-- Local scripts -->
+<script src="shs_api.js" type = "application/javascript"></script>
+<script src="display_data.js" type = "application/javascript"></script>
+<script src="get_user_input.js" type = "application/javascript"></script>
+
+
+
+</body>
+</html>

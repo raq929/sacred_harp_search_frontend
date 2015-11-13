@@ -1,0 +1,49 @@
+font-family: 'Roboto Slab', serif;
+
+
+#result {
+  height:200px;
+  width: 300px;
+  margin: 20px;
+}
+
+.title {
+  margin-left: 50px;
+  float: left;
+}
+
+.image {
+  float: left;
+  margin-left: 50px;
+}
+
+body {
+ font-family: 'Roboto Slab', serif;
+}
+
+#banner {
+  background-image: url("/images/banner.jpeg");
+  background-repeat: none;
+  height:300px;
+  background-size: cover;
+  padding-top: 30px;
+  padding-left: 0px;
+}
+
+h1 {
+  font-family: 'Roboto Slab', serif;
+  color: #1E5FD4;
+  text-shadow: 2px 2px #9DA4D2;
+}
+
+#logout {
+  display: none;
+}
+
+#createSingingForm {
+  display: none;
+}
+
+#fasolaLink {
+  padding: 50px;
+}

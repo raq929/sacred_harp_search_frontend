@@ -2,7 +2,8 @@
 
 var shsapi = {
 
-  shs: 'http://localhost:3000',
+  shs: 'https://mighty-shelf-9974.herokuapp.com',
+  // shs: 'http://localhost:3000',
 
   ajax: function(config, cb) {
     $.ajax(config).done(function(data, textStatus, jqxhr) {

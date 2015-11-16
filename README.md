@@ -34,9 +34,11 @@ jQuery was used mostly to get data from forms in this project.
 ###AJAX
 I created a lot of custom GET requests in order to get the data from various searches.
 
+###What I learned
+
+
 ###Things I'd like to add
-- Use real expressions for more nuanced search functionality
-- Add a 'refine search' sidebar that lists options for making search data more manageble
+- Add a 'refine search' sidebar that lists options for making search data more manageble, using regular expressions
 - Add sorting by date functionality (This was difficult due to dirty data)
 - Parse minutes from other books
 - Parse minutes from singings with multiple books

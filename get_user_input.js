@@ -126,7 +126,7 @@ $(document).ready(function(){
   var editSingingFormSubmit = function(e){
     debugger;
     e.preventDefault();
-    var editedSingingData = shsHelpers.wrap('singing', shsHelpform2object(this));
+    var editedSingingData = shsHelpers.wrap('singing', shsHelpers.form2object(this));
     console.log("editedSinging " + editedSingingData);
     console.log("id= " + editSingingData.singing_id);
     console.log("token=" + user.currentToken);
@@ -191,7 +191,7 @@ $(document).ready(function(){
 
  $("#createSingingForm").on('submit', function(e){
     e.preventDefault();
-    var singing_data = shsHelpers.wrap("singing", shsHelpform2object(this));
+    var singing_data = shsHelpers.wrap("singing", shsHelpers.form2object(this));
     singing_data.singing["book"] = $("#bookSelect option:selected").val();
     singing_data.singing["csv"] = $("#csv").val();
     console.log(singing_data);
@@ -254,7 +254,7 @@ $(document).ready(function(){
 
    $('#register').on('submit', function(e) {
     e.preventDefault();
-    var credentials = shsHelpers.wrap('credentials', shsHelpform2object(this));
+    var credentials = shsHelpers.wrap('credentials', shsHelpers.form2object(this));
     console.log(credentials);
     shsapi.register(credentials, callback);
     return false;

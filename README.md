@@ -1,9 +1,9 @@
 ## Sacred Harp Search
 The front end of an app that allows users to search the Sacred Harp database of minutes.
 
-* [Backend](https://github.com/raq929/sacred_harp_search_backend)
+* [Backend repository](https://github.com/raq929/sacred_harp_search_backend)
 * [Wireframes and user stories](https://github.com/raq929/sacred_harp_search_frontend/tree/master/images/planning)
-* [Deploted site](http://raq929.github.io/sacred_harp_search_frontend)
+* [Deployed site](http://raq929.github.io/sacred_harp_search_frontend)
 * [Deployed backend](https://mighty-shelf-9974.herokuapp.com/)
 
 ##How to use the app

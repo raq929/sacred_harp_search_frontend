@@ -1,10 +1,10 @@
 ## Sacred Harp Search
 The front end of an app that allows users to search the Sacred Harp database of minutes.
 
-[Backend](https://github.com/raq929/sacred_harp_search_backend)
-[Wireframes and user stories](https://github.com/raq929/sacred_harp_search_frontend/tree/master/images/planning)
-[Deploted site](http://raq929.github.io/sacred_harp_search_frontend)
-[Deployed backend](https://mighty-shelf-9974.herokuapp.com/)
+* [Backend](https://github.com/raq929/sacred_harp_search_backend)
+* [Wireframes and user stories](https://github.com/raq929/sacred_harp_search_frontend/tree/master/images/planning)
+* [Deploted site](http://raq929.github.io/sacred_harp_search_frontend)
+* [Deployed backend](https://mighty-shelf-9974.herokuapp.com/)
 
 ##How to use the app
 This app searches the database of Sacred Harp minutes and returns the calls for any given caller, singing, or song. To search, simply click on the tab of what you want to search by and enter your search criteria.
@@ -19,7 +19,7 @@ Admins can also edit the basic singing data (name, date, location), through the 
 
 #Planning
 I had an original wireframe for this project, which I ditched when I discovered Bootstrap tabs, which I thought would make my site a lot cleaner and less cluttered while keeping it to one page as directed.
-I wrote a lot of user storied for this project, and kept coming back to them when I felt lost or overwhelmed by the project. They helped keep me on track. Some of them had to be ditched due to the structure of the data I was using: for instance, people's names were not first and last names, they were one whole string, and rather than go through the process of deciding how to clean up the data and implementing that change, I chose to ditch user stories that required both names. This kept me from spending too much time on user stories that were not practical for the timeframe I had.
+I wrote a lot of user stories for this project, and kept coming back to them when I felt lost or overwhelmed by the project. They helped keep me on track. Some of them had to be canned due to the structure of the data I was using: for instance, people's names were not first and last names, they were one whole string, and rather than go through the process of deciding how to clean up the data and implementing that change, I chose to get rid of user stories that required both names. This kept me from spending too much time on user stories that were not practical for the timeframe I had. I also identified some as stretch goals that I did not get to in the time allowed, and modified others as necessary.
 
 #Technology Used
 

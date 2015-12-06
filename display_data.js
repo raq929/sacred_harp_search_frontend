@@ -60,6 +60,7 @@ var displayCallsBySinging = function(data){
   $(document).ready(function(){
     $("#triggerEditSingingForm").on('submit', triggerSingingFormHandler);
     $("#callsBySingingTable").tablesorter();
+    $("#singingTab").trigger('click');
   });
 };
 

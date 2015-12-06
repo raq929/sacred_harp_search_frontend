@@ -2,8 +2,8 @@
 
 var shsapi = {
 
-  shs: 'https://mighty-shelf-9974.herokuapp.com',
-  // shs: 'http://localhost:3000',
+  //shs: 'https://mighty-shelf-9974.herokuapp.com',
+  shs: 'http://localhost:3000',
 
   ajax: function(config, cb) {
     $.ajax(config).done(function(data, textStatus, jqxhr) {
@@ -97,7 +97,6 @@ var shsapi = {
 
   createSinging: function (data, callback) {
     var json_string = JSON.stringify(data);
-    console.log(json_string);
 
     this.ajax({
       method: 'POST',

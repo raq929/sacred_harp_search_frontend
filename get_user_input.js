@@ -132,13 +132,11 @@ $(document).ready(function(){
   };
 
   var editSingingFormSubmit = function(e){
-    debugger;
     e.preventDefault();
     var editedSingingData = shsHelpers.wrap('singing', shsHelpers.form2object(this));
     console.log("editedSinging " + editedSingingData);
     console.log("id= " + editSingingData.singing_id);
     console.log("token=" + user.currentToken);
-    debugger;
     shsapi.editSinging(editSingingData.singing_id, editSingingData, user.currentToken, displayCallsBySinging);
   };
 
@@ -202,13 +200,14 @@ $(document).ready(function(){
     var singing_data = shsHelpers.wrap("singing", shsHelpers.form2object(this));
     singing_data.singing["book"] = $("#bookSelect option:selected").val();
     singing_data.singing["csv"] = $("#csv").val();
-    console.log(singing_data);
+    
     var cb = function(error, data) {
       if (error) {
-      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+        console.log("this is the error object",  error);
+        $("#registerMessage").text(error.jqxher.responseText);
       return;
       }  else {
-        $('#result').val(JSON.stringify(data, null, 4));
+       console.log("data from server" + JSON.stringify(data, null, 4));
         displayCallsBySinging(data);
       }
     };
@@ -230,7 +229,6 @@ $(document).ready(function(){
       $("#logout").show();
       $("#createSingingForm").show();
 
-      console.log('' + data.user.token);
       user.currentToken = data.user.token;
       user.userID = data.user.id;
       user.admin = data.user.admin;

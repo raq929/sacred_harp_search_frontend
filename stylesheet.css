@@ -47,3 +47,10 @@ h1 {
 #fasolaLink {
   padding: 50px;
 }
+
+#adminPopup {
+  display:none;
+  border-radius: 10px;
+  border: 3px solid black;
+  position: relative;
+}

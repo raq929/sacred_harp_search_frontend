@@ -86,7 +86,7 @@ var displaySingings = function(data) {
           $('#result').val('status: ' + error.status + ', error: ' +error.error);
           return;
           }  else {
-            $('#result').val(JSON.stringify(data, null, 4));
+            console.log(JSON.stringify(data, null, 4));
             displayCallsBySinging(data);
           }
         };

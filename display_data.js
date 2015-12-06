@@ -44,6 +44,10 @@ var triggerSingingFormHandler = function(e){
 
 var displayCallsBySinging = function(data){
 
+  // if data is coming from the singings controller, change it into a format useable by the handlebars template
+  if (data.singings){
+    data.calls = data.singings;
+  }
   // stores singing data for access by editSingingForm
   editSingingData = {name: data.calls[0].singing.name,
                  location: data.calls[0].singing.location,

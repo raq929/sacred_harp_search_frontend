@@ -47,8 +47,13 @@ var shsHelpers = {
     } else {
       confirm_password.setCustomValidity('');
     }
-  }
+  },
 
+  removeMessage: function() {
+    setTimeout(function(){
+      $("#registerMessage").text("");
+    }, 5000);
+  } 
 };
 
 
@@ -205,6 +210,7 @@ $(document).ready(function(){
       if (error) {
         console.log("this is the error object",  error);
         $("#registerMessage").text(error.jqxher.responseText);
+        shsHelpers.removeMessage();
       return;
       }  else {
        console.log("data from server" + JSON.stringify(data, null, 4));
@@ -272,13 +278,10 @@ $(document).ready(function(){
     shsapi.register(credentials, function(err, data){
       if (err) {
         console.log(err);
-        $("#registerMessage").text("Invalid email or password confirmation.");
       }
       else {
         $("#registerMessage").text("You have been registered!");
-        setTimeout(function(){
-          $("#registerMessage").text("");
-        }, 5000);
+        shsHelpers.removeMessage();
       }
     }
     );

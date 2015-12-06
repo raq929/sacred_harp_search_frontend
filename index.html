@@ -74,23 +74,24 @@
 
     <div id="Admin" class="tab-pane fade">
       <h3>Admin</h3>
+      <div id= "registerMessage"></div>
         <form class="form-horizontal" id="register">
           <div class='form-group'>
             <label for="inputEmail" class="control-label col-xs-2">Email</label>
             <div class="col-xs-10">
-            <input name="email" class="form-control" type="text" placeholder="email">
+            <input name="email" class="form-control" type="text" placeholder="email" required>
             </div>
           </div> <!-- end form-group -->
           <div class='form-group'>
             <label for="inputPassword" class="control-label col-xs-2">Password</label>
             <div class="col-xs-10">
-            <input name="password" class="form-control" type="password" placeholder="password">
+            <input name="password" id="password" class="form-control" type="password" placeholder="password" required>
             </div>
           </div> <!-- end form-group -->
           <div class='form-group'>
             <label for="inputPassword" class="control-label col-xs-2">Confirm Password</label>
             <div class="col-xs-10">
-             <input name="password_confirmation" class="form-control" type="password" placeholder="password confirmation">
+             <input name="password_confirmation" id= "confirm_password" class="form-control" type="password" placeholder="password confirmation" required>
             </div>
           </div> <!-- end form-group -->
           <div class='form-group'>

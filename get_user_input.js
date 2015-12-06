@@ -38,7 +38,15 @@ var shsHelpers = {
   },
 
   errorHandler: function(error, data){
-     $('#result').val('status: ' + error.status + ', error: ' +error.error);
+     console.log(error);
+  },
+
+  validatePassword: function(){
+    if(password.value != confirm_password.value) {
+      confirm_password.setCustomValidity("Passwords Don't Match");
+    } else {
+      confirm_password.setCustomValidity('');
+    }
   }
 
 };
@@ -251,12 +259,31 @@ $(document).ready(function(){
     return false;
   });
 
+  //password validation
+  var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
+
+  password.onchange = shsHelpers.validatePassword;
+  confirm_password.onkeyup = shsHelpers.validatePassword;
+
 
    $('#register').on('submit', function(e) {
     e.preventDefault();
     var credentials = shsHelpers.wrap('credentials', shsHelpers.form2object(this));
     console.log(credentials);
-    shsapi.register(credentials, callback);
+    shsapi.register(credentials, function(err, data){
+      if (err) {
+        console.log(err);
+        $("#registerMessage").text("Invalid email or password confirmation.");
+      }
+      else {
+        $("#registerMessage").text("You have been registered!");
+        setTimeout(function(){
+          $("#registerMessage").text("");
+        }, 5000);
+      }
+    }
+    );
     return false;
   });
 

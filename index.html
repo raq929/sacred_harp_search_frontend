@@ -47,11 +47,20 @@
       <div>
           <form class="form-inline" role="form" id="songSearch">
             <div class="form-group">
+              <label for="sel1" class="control-label col-xs-2">Book:</label>
+              <div class="col-xs-10">
+                <select class="form-control" id="bookSelectSongs" name="book">
+                  <option>1991 Sacred Harp</option>
+                  <option>Shenandoah Harmony</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
               <input name = 'number' type="text" placeholder="Song number">
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
           </form>
-        </div> <!-- ends form div   -->
+      </div> <!-- ends form div   -->
       <div id="putCallsBySongHere"class="table-responsive tablesorter">
 
       </div>
@@ -218,7 +227,7 @@
 
 <!-- Search by song template -->
 <script id="callsBySong" type="text/x-handlebars-template">
-<h3>Calls of {{calls.0.song.name}} - {{calls.0.song.number}}</h3>
+<h3>Calls of {{calls.0.song.name}} - {{calls.0.song.number}} {{calls.0.book.name}}</h3>
         <table class="table table-striped table-hover tablesorter" id="callsBySongTable" summary="Table of calls of the requested song">
           <thead>
             <tr>

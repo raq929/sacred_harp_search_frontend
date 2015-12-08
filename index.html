@@ -308,7 +308,9 @@
                 <th>Singing</th>
                 <th>Location</th>
                 <th>Date</th>
-                <th>See calls<th>
+                <th>See calls/Edit<th>
+                <th>Delete Singing<th>
+
             </tr>
           </thead>
           <tbody class = "tableBody">
@@ -317,7 +319,9 @@
                 <td>{{name}}</td>
                 <td>{{location}}</td>
                 <td>{{date}}</td>
-                <td><button class="seeCalls btn btn-primary" data-singing_id="{{id}}">See Calls</button>
+                <td><button class="seeCalls btn btn-primary" data-singing_id="{{id}}">See Calls</button></td>
+                <td><button class="deleteSinging btn btn-primary" data-singing_id="{{id}}" data-singing_name= '{{name}}'>Delete Singing</button></td>
+
             </tr>
             {{/each}}
           </tbody>

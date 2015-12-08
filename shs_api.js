@@ -2,8 +2,8 @@
 
 var shsapi = {
 
-  shs: 'https://mighty-shelf-9974.herokuapp.com',
-  //shs: 'http://localhost:3000',
+  //shs: 'https://mighty-shelf-9974.herokuapp.com',
+  shs: 'http://localhost:3000',
 
   ajax: function(config, cb) {
     $.ajax(config).done(function(data, textStatus, jqxhr) {
@@ -122,5 +122,17 @@ var shsapi = {
       dataType: 'json'
     }, callback);
   },
+
+  deleteSinging: function(id, token, callback){
+    this.ajax({
+      method: 'DELETE',
+      url: this.shs + '/singings/' + id,
+      headers: {
+        Authorization: 'Token token=' + token
+      },
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json'
+    }, callback);
+  }
 
 };

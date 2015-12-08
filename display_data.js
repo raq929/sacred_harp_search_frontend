@@ -80,6 +80,8 @@ var displaySingings = function(data) {
   var newHTML = singingsByNameTemplate(data);
   $("#putCallsBySingingHere").html(newHTML);
   // After the html loads, set the click handler for the buttons
+  var params = "?name=" + data.singings[0].name;
+  
   $(document).ready(function(){
     $("#singingsByNameTable").tablesorter();
     $(".seeCalls").on("click", function(event){
@@ -95,9 +97,36 @@ var displaySingings = function(data) {
             displayCallsBySinging(data);
           }
         };
-        shsapi.getCalls(route, cb);
-      });
+      shsapi.getCalls(route, cb);
     });
-  };
+
+    $(".deleteSinging").on("click", function(event){
+      event.preventDefault();
+      var singing_id= $(event.target).data('singing_id');
+      
+      var deleteSingingCb = function(error, data) {
+        if (error) {
+         console.log('status: ' + error.status + ', error: ' +error.error);
+          return;
+          } 
+          else{
+            var cb = function(error, data) {
+            if (error) {
+              $('#result').val('status: ' + error.status + ', error: ' +error.error);
+              return;
+              }  else {
+                console.log(JSON.stringify(data, null, 4));
+                displaySingings(data);
+              }
+            };
+            console.log(params);
+            shsapi.getSingingsByName(params, cb);
+          }
+          
+        };
+      shsapi.deleteSinging(singing_id, user.currentToken,deleteSingingCb);
+    });
+  });
+};
 
 

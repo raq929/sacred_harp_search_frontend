@@ -60,10 +60,10 @@ var shsHelpers = {
  var getCallsbySinging = function(error, data){
     var cb = function(error, data) {
       if (error) {
-      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+      $('#result').val('status: ' + error.status + ', error: ' + error.error);
       return;
       }  else {
-        $('#result').val(JSON.stringify(data, null, 4));
+        console.log(data);
         displayCallsBySinging(data);
       }
     };
@@ -174,17 +174,17 @@ $(document).ready(function(){
     };
     e.preventDefault();
     var params = "?name=" + event.target['name'].value;
-    console.log(params);
     shsapi.getSingingsByName(params, cb);
   });
 
   $(".seeCalls").on("click", function(e){
-    console.log("YOu clicked a row!")
     e.preventDefault();
     var singing_id= event.target['singing_id'].val();
     console.log(params);
     shsapi.getSingingsByName(params, cb);
   });
+
+  
 
   $('#allCallersButton').on('click', function(e){
     var cb = function(error, data) {

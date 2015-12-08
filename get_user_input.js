@@ -116,10 +116,10 @@ $(document).ready(function(){
   var getCallsbySong = function(error, data){
     var cb = function(error, data) {
       if (error) {
-      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+      console.log(error.status, error.error);
       return;
       }  else {
-        $('#result').val(JSON.stringify(data, null, 4));
+        console.log(data)
         displayCallsBySong(data);
       }
     };
@@ -139,9 +139,7 @@ $(document).ready(function(){
   var editSingingFormSubmit = function(e){
     e.preventDefault();
     var editedSingingData = shsHelpers.wrap('singing', shsHelpers.form2object(this));
-    console.log("editedSinging " + editedSingingData);
-    console.log("id= " + editSingingData.singing_id);
-    console.log("token=" + user.currentToken);
+
     shsapi.editSinging(editSingingData.singing_id, editSingingData, user.currentToken, displayCallsBySinging);
   };
 
@@ -156,7 +154,7 @@ $(document).ready(function(){
 
   $('#songSearch').on('submit', function(e) {
     e.preventDefault();
-    var params = "?number=" + event.target['number'].value;
+    var params = "?number=" + event.target['number'].value + "&book=" + $("#bookSelectSongs option:selected").val();
     console.log(params);
 
     shsapi.getSongId(params, getCallsbySong);
@@ -165,7 +163,7 @@ $(document).ready(function(){
   $('#singingSearch').on('submit', function(e) {
     var cb = function(error, data) {
       if (error) {
-      $('#result').val('status: ' + error.status + ', error: ' +error.error);
+      console.log(error);
       return;
       }  else {
         $('#result').val(JSON.stringify(data, null, 4));

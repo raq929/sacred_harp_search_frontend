@@ -63,7 +63,7 @@ var shsHelpers = {
       $('#result').val('status: ' + error.status + ', error: ' + error.error);
       return;
       }  else {
-        console.log(data);
+        
         displayCallsBySinging(data);
       }
     };
@@ -211,7 +211,6 @@ $(document).ready(function(){
         shsHelpers.removeMessage();
       return;
       }  else {
-       console.log("data from server" + JSON.stringify(data, null, 4));
         displayCallsBySinging(data);
       }
     };

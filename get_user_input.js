@@ -106,7 +106,7 @@ $(document).ready(function(){
       return;
     }
     else {
-     if (data.callers.length === 1) {
+     if (data.caller) {
         route = shsHelpers.getRoute(data);
         shsapi.getCalls(route, cb);
       }
@@ -199,6 +199,22 @@ $(document).ready(function(){
     };
     e.preventDefault();
     shsapi.getCallers(cb);
+  });
+
+  $('#putCallsByCallerHere').on('click', '#allCallersTable>tbody>tr', function(e){
+    e.preventDefault();
+    //make a get request with the caller id of the caller clicked
+    var route = "/callers/" + this.dataset.callerid;
+    var cb = function(error, data) {
+      if (error) {
+        console.log(error);
+        return;
+        }  else {
+          console.log(JSON.stringify(data, null, 4));
+          displayCallsByCaller(data);
+        }
+      };
+    shsapi.getCalls(route, cb);
   });
 
  $("#createSingingForm").on('submit', function(e){

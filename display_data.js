@@ -5,6 +5,7 @@
 
 
 var displayCallsByCaller = function(data){
+  console.log(data)
   var callsByCallerTemplate= Handlebars.compile($('#callsByCaller').html());
   var newHTML = callsByCallerTemplate(data);
   $("#putCallsByCallerHere").html(newHTML);

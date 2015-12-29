@@ -21,13 +21,23 @@
 <div class="container">
   <div class="example">
     <ul class="nav nav-tabs" id="myTab">
-      <li class="active"><a data-toggle="tab" href="#Caller">Caller</a></li>
+      <li class="active"><a data-toggle="tab" href="#About">About</a></li>
+      <li><a data-toggle="tab" href="#Caller">Caller</a></li>
       <li><a data-toggle="tab" id="songTab" href="#Song">Song</a></li>
       <li><a data-toggle="tab" id="singingTab" href="#Singing">Singing</a></li>
       <li><a data-toggle="tab" id="adminTab" href="#Admin">Admin</a><li>
     </ul>
     <div class="tab-content">
-      <div id="Caller" class="tab-pane fade in active">
+      <div id="About" class="tab-pane fade in active">
+        <h3>About Sacred Harp Search</h3>
+        <p>
+          This app is a tool for singers of Sacred Harp (Shape note) music. It allows singers to search past minutes to see what calls were made by whom and where. The tables are sortable. The app also allows singing secretaries and organizers to easily add, edit and delete minutes in the database using the minutes format that they would use to submit minutes to their parent organizations.
+        </p>
+        <p>
+          This is an example version of this app which does not use all the available data from past singings due to database limitations on Heroku. For beta testing, any registered user can act as an admin. 
+        </p>
+      </div>
+      <div id="Caller" class="tab-pane fade">
         <h3>Caller</h3>
         <div>
           <form class="form-inline" role="form" id="callerSearch">
@@ -188,6 +198,9 @@
       </div> <!-- End Admin tab div -->
       <div class="col-xs-10" id="fasolaLink">
         <a href="http://fasola.org/shmha/">More information about Sacred Harp singing</a>
+      </div>
+      <div class="col-xs-10" id="gitHub">
+        <a href="https://github.com/raq929/sacred_harp_search_frontend"><img src="./images/github.svg"/></a>
       </div>
     </div> <!-- End tab content div -->
   </div> <!-- End example div -->

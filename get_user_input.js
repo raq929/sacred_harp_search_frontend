@@ -94,12 +94,11 @@ $(document).ready(function(){
   var getCallsbyCaller = function(error,data){
     var cb = function(error, data) {
       if (error) {
-      $('#result').val('status: ' + error.status + ', error: ' +error.error);
-      return;
+        $('#result').val('status: ' + error.status + ', error: ' +error.error);
+        return;
       }  else {
-        $('#result').val(JSON.stringify(data, null, 4));
-        displayCallsByCaller(data);
-      }
+          displayCallsByCaller(data);
+        }
     };
     var route;
     if (error){
@@ -107,9 +106,13 @@ $(document).ready(function(){
       return;
     }
     else {
-      $('#result').val(JSON.stringify(data, null, 4));
-      route = shsHelpers.getRoute(data);
-      shsapi.getCalls(route, cb);
+     if (data.callers.length === 1) {
+        route = shsHelpers.getRoute(data);
+        shsapi.getCalls(route, cb);
+      }
+      else {
+        displayCallers(data);
+      }
     }
   };
 

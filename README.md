@@ -8,13 +8,13 @@ The front end of an app that allows users to search the Sacred Harp database of 
 
 ##How to use the app
 This app searches the database of Sacred Harp minutes and returns the calls for any given caller, singing, or song. To search, simply click on the tab of what you want to search by and enter your search criteria.
-At this time, searches must be *exact matches*.
+Seaches for callers do not need to be exact matches at this time, however, searches for singings and songs must be exact.
 
 As an admin, you can also use this app to add singing minutes to the database. After signing in, you can enter the name, date, and location of the singing and enter the minutes in an approved format.
 Minutes from the Denson book (1991 Sacred Harp) are expected in the [standard minutes format](http://fasola.org/minutes/OnlineMinutesPDFFiles/SacredHarpMinutesOnline2014.pdf) for that book.
 Minutes from Shenandoah Harmony are expected in their [approved format](http://www.shenandoahharmony.com/?wpdmdl=2213) as CSV.
 Minutes from singings with multiple books are not supported at this time.
-Admins can also edit the basic singing data (name, date, location), through the singing search tab. Call editing is not yet supported.
+Admins can also edit the basic singing data (name, date, location), through the singing search tab. Call editing is not yet supported. They can also delete a singing, which deletes the singing and all the calls associated with that singing.
 
 
 #Planning
